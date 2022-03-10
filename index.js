@@ -25,6 +25,9 @@ async function handleRequest(request) {
   else if(password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null) {
     badPasswordMessage = 'Password must contain at least 1 primary Simpsons family character';
   }
+  else if(password.match('\d{5}(-\d{4})?') === null) {
+    badPasswordMessage = 'Password must contain a United States zip code';
+  }
 
   // To Do:
   // Password must contain at least 3 digits from the first 10 decimal places of pi
