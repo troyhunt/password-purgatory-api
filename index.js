@@ -43,6 +43,9 @@ async function handleRequest(request) {
   else if(password.match('\d{5}(-\d{4})?') === null) {
     badPasswordMessage = 'Password must contain a United States zip code';
   }
+  else if(password.match(/[ÄÜÖẞ]/g) === null) {
+    badPasswordMessage = 'Password must contain at leat one upper case German Umlaut';
+  }
   else if(password.match('dog$') === null) {
     badPasswordMessage = 'Password must end with dog';
   }
