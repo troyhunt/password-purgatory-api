@@ -31,7 +31,10 @@ async function handleRequest(request) {
   else if(password.match('/:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/g') === null) {
     badPasswordMessage = 'Password must contain at least one emoticon';
   }
-
+  else if([].concat(password.match(/[0-9]/g)).map(Number).reduce( (a, b) => a + b) % 3 !== 0) {
+    badPasswordMessage = 'Password when stripped of non-numeric characters must be a number divisible by 3';
+  }
+  
   // To Do:
   // Password must contain at least 3 digits from the first 10 decimal places of pi
   // Password must contain at least 1 letter from the Greek alphabet
