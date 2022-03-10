@@ -13,7 +13,7 @@ async function handleRequest(request) {
   else if(password.length < 8) {
     badPasswordMessage = 'Password must be at least 8 characters long';
   }
-  else if(password.match(/\d+/g) === null) {
+  else if(password.match(/\d+/) === null) {
     badPasswordMessage = 'Password must contain at least 1 number';
   }
   else if(password.match(/[A-Z]/) === null) {
@@ -25,7 +25,7 @@ async function handleRequest(request) {
   else if(password.match(/Homer|Marge|Bart|Lisa|Maggie/) === null) {
     badPasswordMessage = 'Password must contain at least 1 primary Simpsons family character';
   }
-  else if(password.match(/[ÅåÄäÖöÆæØø]/g) === null) {
+  else if(password.match(/[ÅåÄäÖöÆæØø]/) === null) {
     badPasswordMessage = 'Password must contain at least 1 Nordic character';
   }
   else if(password.match(/[\u0370-\u03ff\u1f00-\u1fff]/) === null) {
