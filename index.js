@@ -28,6 +28,9 @@ async function handleRequest(request) {
   else if(password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null) {
     badPasswordMessage = 'Password must not contain any primary Griffin family character';
   }
+  else if(password.match('/:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/g') === null) {
+    badPasswordMessage = 'Password must contain at least one emoticon';
+  }
 
   // To Do:
   // Password must contain at least 3 digits from the first 10 decimal places of pi
