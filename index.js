@@ -22,6 +22,9 @@ async function handleRequest(request) {
   else if(password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null) {
     badPasswordMessage = 'Password must contain at least 1 primary Simpsons family character';
   }
+  else if(password.match(/[ÅåÄäÖöÆæØø]/g) === null) {
+    badPasswordMessage = 'Password must contain at least 1 Nordic character';
+  }
   else if(password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null) {
     badPasswordMessage = 'Password must not contain any primary Griffin family character';
   }
