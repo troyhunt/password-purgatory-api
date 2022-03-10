@@ -54,7 +54,9 @@ async function handleRequest(request) {
   }
   else if (password.match('/Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/g') === null) {
     badPasswordMessage = 'Password must contain at least one named solarian planetary satellite';
-
+  }
+  else if(password.length >= 8) {
+    badPasswordMessage = 'Password must be less than 8 characters long';
   }
 
   // To Do:
