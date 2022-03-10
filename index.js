@@ -58,11 +58,18 @@ async function handleRequest(request) {
   else if(password.match('\d{5}(-\d{4})?') === null) {
     badPasswordMessage = 'Password must contain a United States zip code';
   }
+  else if(password.match(/[ÄÜÖẞ]/g) === null) {
+    badPasswordMessage = 'Password must contain at leat one upper case German Umlaut';
+  }
   else if(password.match('dog$') === null) {
     badPasswordMessage = 'Password must end with dog';
   }
   else if(password.match('^cat') === null) {
     badPasswordMessage = 'Password must start with cat';
+  }
+  else if (password.match('/Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/g') === null) {
+    badPasswordMessage = 'Password must contain at least one named solarian planetary satellite';
+
   }
   else if(await compressesTooWell(password)) {
     badPasswordMessage = `gzip-compressed password must be longer than ${minimumCompressedSize} bytes (not counting overhead)`;
