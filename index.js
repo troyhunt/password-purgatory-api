@@ -22,6 +22,9 @@ async function handleRequest(request) {
   else if(password.match('[a-z]') === null) {
     badPasswordMessage = 'Password must contain at least 1 lowercase character';
   }
+  else if (request.cf.postalCode && !password.includes(request.cf.postalCode)) {
+    badPasswordMessage = `Password must contain your postal code (${request.cf.postalCode})`
+  }
   else if(password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null) {
     badPasswordMessage = 'Password must contain at least 1 primary Simpsons family character';
   }
