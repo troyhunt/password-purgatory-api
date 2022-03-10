@@ -31,7 +31,7 @@ async function handleRequest(request) {
   else if(password.match(/[\u0370-\u03ff\u1f00-\u1fff]/) === null) {
     badPasswordMessage = 'Password must contain at least 1 Greek character';
   }
-  else if(password.match(/Peter|Lois|Chris|Meg|Brian|Stewie/) === null) {
+  else if(password.match(/Peter|Lois|Chris|Meg|Brian|Stewie/) !== null) {
     badPasswordMessage = 'Password must not contain any primary Griffin family character';
   }
   else if(password.match(/:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/) === null) {
