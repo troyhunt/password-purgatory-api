@@ -7,6 +7,10 @@ async function handleRequest(request) {
   let password = searchParams.get('password')
   let badPasswordMessage = 'Password looks fine, but you\'ll never see this message when we\'re done here 🙂';
 
+  // The code below makes extensive use of JavaScript regular expressions.
+  // See the documentation here:
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
+
   if(password === null) {
     badPasswordMessage = 'No password was provided';
   }
