@@ -22,6 +22,9 @@ async function handleRequest(request) {
   else if(password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null) {
     badPasswordMessage = 'Password must contain at least 1 primary Simpsons family character';
   }
+  else if([].concat(password.match(/[0-9]/g)).map(Number).reduce( (a, b) => a + b) % 3 !== 0) {
+    badPasswordMessage = 'Password when stripped of non-numeric characters must be a number divisible by 3';
+  }
 
   // To Do:
   // Password must contain at least 3 digits from the first 10 decimal places of pi
