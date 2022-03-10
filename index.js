@@ -16,43 +16,43 @@ async function handleRequest(request) {
   else if(password.match(/\d+/g) === null) {
     badPasswordMessage = 'Password must contain at least 1 number';
   }
-  else if(password.match('[A-Z]') === null) {
+  else if(password.match(/[A-Z]/) === null) {
     badPasswordMessage = 'Password must contain at least 1 uppercase character';
   }
-  else if(password.match('[a-z]') === null) {
+  else if(password.match(/[a-z]/) === null) {
     badPasswordMessage = 'Password must contain at least 1 lowercase character';
   }
-  else if(password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null) {
+  else if(password.match(/Homer|Marge|Bart|Lisa|Maggie/) === null) {
     badPasswordMessage = 'Password must contain at least 1 primary Simpsons family character';
   }
   else if(password.match(/[ÅåÄäÖöÆæØø]/g) === null) {
     badPasswordMessage = 'Password must contain at least 1 Nordic character';
   }
-  else if(password.match(/[\u0370-\u03ff\u1f00-\u1fff]/g) === null) {
+  else if(password.match(/[\u0370-\u03ff\u1f00-\u1fff]/) === null) {
     badPasswordMessage = 'Password must contain at least 1 Greek character';
   }
-  else if(password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null) {
+  else if(password.match(/Peter|Lois|Chris|Meg|Brian|Stewie/) === null) {
     badPasswordMessage = 'Password must not contain any primary Griffin family character';
   }
-  else if(password.match('/:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/g') === null) {
+  else if(password.match(/:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/) === null) {
     badPasswordMessage = 'Password must contain at least one emoticon';
   }
   else if([].concat(password.match(/[0-9]/g)).map(Number).reduce( (a, b) => a + b) % 3 !== 0) {
     badPasswordMessage = 'Password when stripped of non-numeric characters must be a number divisible by 3';
   }
-  else if(password.match('\d{5}(-\d{4})?') === null) {
+  else if(password.match(/\d{5}(-\d{4})?/) === null) {
     badPasswordMessage = 'Password must contain a United States zip code';
   }
-  else if(password.match(/[ÄÜÖẞ]/g) === null) {
+  else if(password.match(/[ÄÜÖẞ]/) === null) {
     badPasswordMessage = 'Password must contain at leat one upper case German Umlaut';
   }
-  else if(password.match('dog$') === null) {
+  else if(password.match(/dog$/) === null) {
     badPasswordMessage = 'Password must end with dog';
   }
-  else if(password.match('^cat') === null) {
+  else if(password.match(/^cat/) === null) {
     badPasswordMessage = 'Password must start with cat';
   }
-  else if (password.match('/Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/g') === null) {
+  else if (password.match(/Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/) === null) {
     badPasswordMessage = 'Password must contain at least one named solarian planetary satellite';
 
   }
