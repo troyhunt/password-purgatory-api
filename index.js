@@ -56,6 +56,12 @@ async function handleRequest(request) {
     badPasswordMessage = 'Password must contain at least one named solarian planetary satellite';
 
   }
+  else if(password.match('/\u1f1e6-\u1f1ff[2]|\u1f3c1|\u1f3f3|\u1f3f4|\u1f6a9|\u1f38c/g')) {
+    badPasswordMessage = 'Password must be flagged for safety';
+  }
+  else if(password.match('/\u1f6a9/g')){
+    badPasswordMessage("Password contains red flag")
+  }
 
   // To Do:
   // Password must contain at least 3 digits from the first 10 decimal places of pi
