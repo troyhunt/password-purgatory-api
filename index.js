@@ -28,6 +28,9 @@ async function handleRequest(request) {
   else if(password.match(/[ÅåÄäÖöÆæØø]/g) === null) {
     badPasswordMessage = 'Password must contain at least 1 Nordic character';
   }
+  else if(password.match(/[\u0370-\u03ff\u1f00-\u1fff]/g) === null) {
+    badPasswordMessage = 'Password must contain at least 1 Greek character';
+  }
   else if(password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null) {
     badPasswordMessage = 'Password must not contain any primary Griffin family character';
   }
