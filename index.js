@@ -55,12 +55,12 @@ async function handleRequest(request) {
   else if (password.match('/Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/g') === null) {
     badPasswordMessage = 'Password must contain at least one named solarian planetary satellite';
 
-  }
+  }	
   else if(password.match('/\u1f1e6-\u1f1ff[2]|\u1f3c1|\u1f3f3|\u1f3f4|\u1f6a9|\u1f38c/g')) {
     badPasswordMessage = 'Password must be flagged for safety';
   }
   else if(password.match('/\u1f6a9/g')){
-    badPasswordMessage("Password contains red flag")
+    badPasswordMessage('Password contains red flag')
   }
 
   // To Do:
