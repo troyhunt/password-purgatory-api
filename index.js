@@ -1,4 +1,4 @@
-import {gzipSize} from "gzip-size";
+const { gzipSize } = require('gzip-size');
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
