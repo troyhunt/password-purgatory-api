@@ -1,11 +1,26 @@
+import {gzipSize} from "gzip-size";
+
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
 })
+
+async function getCompressionCheck(minimumSize) {
+  const baseline = await gzipSize('a');
+
+  function compressesTooWell(password) {
+    return gzipSize(password).then((size) => size - baseline < minimumSize);
+  }
+
+  return compressesTooWell;
+}
 
 async function handleRequest(request) {
   const { searchParams } = new URL(request.url)
   let password = searchParams.get('password')
   let badPasswordMessage = 'Password looks fine, but you\'ll never see this message when we\'re done here 🙂';
+
+  const minimumCompressedSize = 23;
+  const compressesTooWell = await getCompressionCheck(minimumCompressedSize);
 
   if(password === null) {
     badPasswordMessage = 'No password was provided';
@@ -49,7 +64,10 @@ async function handleRequest(request) {
   else if(password.match('^cat') === null) {
     badPasswordMessage = 'Password must start with cat';
   }
-  
+  else if(await compressesTooWell(password)) {
+    badPasswordMessage = `gzip-compressed password must be longer than ${minimumCompressedSize} bytes (not counting overhead)`;
+  }
+
   // To Do:
   // Password must contain at least 3 digits from the first 10 decimal places of pi
   // Password must contain at least 1 letter from the Greek alphabet
