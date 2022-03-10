@@ -19,6 +19,9 @@ async function handleRequest(request) {
   else if(password.match('[A-Z]') === null) {
     badPasswordMessage = 'Password must contain at least 1 uppercase character';
   }
+  else if(password.match('[a-z]') === null) {
+    badPasswordMessage = 'Password must contain at least 1 lowercase character';
+  }
   else if(password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null) {
     badPasswordMessage = 'Password must contain at least 1 primary Simpsons family character';
   }
@@ -33,6 +36,15 @@ async function handleRequest(request) {
   }
   else if([].concat(password.match(/[0-9]/g)).map(Number).reduce( (a, b) => a + b) % 3 !== 0) {
     badPasswordMessage = 'Password when stripped of non-numeric characters must be a number divisible by 3';
+  }
+  else if(password.match('\d{5}(-\d{4})?') === null) {
+    badPasswordMessage = 'Password must contain a United States zip code';
+  }
+  else if(password.match('dog$') === null) {
+    badPasswordMessage = 'Password must end with dog';
+  }
+  else if(password.match('^cat') === null) {
+    badPasswordMessage = 'Password must start with cat';
   }
   
   // To Do:
