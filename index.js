@@ -9,7 +9,7 @@ async function handleRequest(request) {
 
   // The code below makes extensive use of JavaScript regular expressions.
   // See the documentation here:
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
   if(password === null) {
     badPasswordMessage = 'No password was provided';
