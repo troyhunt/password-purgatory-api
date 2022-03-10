@@ -25,6 +25,9 @@ async function handleRequest(request) {
   else if(password.match(/[ÅåÄäÖöÆæØø]/g) === null) {
     badPasswordMessage = 'Password must contain at least 1 Nordic character';
   }
+  else if(password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null) {
+    badPasswordMessage = 'Password must not contain any primary Griffin family character';
+  }
 
   // To Do:
   // Password must contain at least 3 digits from the first 10 decimal places of pi
