@@ -31,7 +31,7 @@ async function handleRequest(request) {
     },
     {
       passwordIsInvalid: password =>
-        password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null,
+        password.match(/Peter|Lois|Chris|Meg|Brian|Stewie/) !== null,
       message: 'Password must not contain any primary Griffin family character',
     },
     {
