@@ -5,8 +5,7 @@ addEventListener('fetch', event => {
 async function handleRequest(request) {
   const { searchParams } = new URL(request.url)
   let password = searchParams.get('password')
-  let badPasswordMessage =
-    "Password looks fine, but you'll never see this message when we're done here 🙂"
+  let badPasswordMessage = "Password must not be used by another user in the plattform" // Change the catch-all/final error message (ironic, frustrating, and impossible to check by the user)
 
   // The code below makes extensive use of JavaScript regular expressions.
   // See the documentation here:
