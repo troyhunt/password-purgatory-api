@@ -98,8 +98,10 @@ async function handleRequest(request) {
     )
     // Randomly choose one.
     // TODO: Make this consider the "infuriationLevel" property
-    badPasswordMessage =
-      validChecks[Math.floor(Math.random() * validChecks.length)].message
+    if (validChecks.length) {
+      badPasswordMessage =
+        validChecks[Math.floor(Math.random() * validChecks.length)].message
+    }
   }
 
   // To Do:
