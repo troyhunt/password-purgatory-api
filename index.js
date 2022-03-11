@@ -11,22 +11,6 @@ async function handleRequest(request) {
   // TODO: Add a "infuriationLevel" property
   const checks = [
     {
-      passwordIsInvalid: password => password.length < 8,
-      message: 'Password must be at least 8 characters long',
-    },
-    {
-      passwordIsInvalid: password => password.match(/\d+/g) === null,
-      message: 'Password must contain at least 1 number',
-    },
-    {
-      passwordIsInvalid: password => password.match('[A-Z]') === null,
-      message: 'Password must contain at least 1 uppercase letter',
-    },
-    {
-      passwordIsInvalid: password => password.match('[a-z]') === null,
-      message: 'Password must contain at least 1 lowercase letter',
-    },
-    {
       passwordIsInvalid: password =>
         password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null,
       message:
@@ -92,6 +76,18 @@ async function handleRequest(request) {
 
   if (password === null) {
     badPasswordMessage = 'No password was provided'
+  } 
+  else if(password.length < 8) {
+    badPasswordMessage = 'Password must be at least 8 characters long'
+  }
+  else if(password.match(/\d+/g) === null) {
+    badPasswordMessage = 'Password must contain at least 1 number'
+  }
+  else if(password.match('[A-Z]') === null) {
+    badPasswordMessage = 'Password must contain at least 1 uppercase character'
+  }
+  else if(password.match('[a-z]') === null) {
+    badPasswordMessage = 'Password must contain at least 1 lowercase character'
   } else {
     // Filter down to checks that are failing.
     const validChecks = checks.filter(check =>
