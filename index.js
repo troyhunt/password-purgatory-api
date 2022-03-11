@@ -46,13 +46,13 @@ async function handleRequest(request) {
         password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null,
       message: 'Password must not contain any primary Griffin family character',
     },
-    {
-      // TODO: Regex is broken, disabled for now.
-      // passwordIsInvalid: password => password.match(
-      //   "/:‑)|:)|:-]|:]|:>|:-}|:}|:o))|:^)|=]|=)|:]|:->|:>|8-)|:-}|:}|:o)|:^)|=]|=)|:‑D|:D|B^D|:‑(|:(|:‑<|:<|:‑[|:[|:-|||>:[|:{|:(|;(|:'‑(|:'(|:=(|:'‑)|:')|:\"D|:‑O|:O|:‑o|:o|:-0|>:O|>:3|;‑)|;)|;‑]|;^)|:‑P|:-/|:/|:‑.|>:|>:/|:|:‑||:||>:‑)|>:)|}:‑)|>;‑)|>;)|>:3||;‑)|:‑J|<:‑||~:>/g",
-      // ) === null,
-      // message: 'Password must contain at least one emoticon'
-    },
+    // {
+    //   // TODO: Regex is broken, disabled for now.
+    //   passwordIsInvalid: password => password.match(
+    //     "/:‑)|:)|:-]|:]|:>|:-}|:}|:o))|:^)|=]|=)|:]|:->|:>|8-)|:-}|:}|:o)|:^)|=]|=)|:‑D|:D|B^D|:‑(|:(|:‑<|:<|:‑[|:[|:-|||>:[|:{|:(|;(|:'‑(|:'(|:=(|:'‑)|:')|:\"D|:‑O|:O|:‑o|:o|:-0|>:O|>:3|;‑)|;)|;‑]|;^)|:‑P|:-/|:/|:‑.|>:|>:/|:|:‑||:||>:‑)|>:)|}:‑)|>;‑)|>;)|>:3||;‑)|:‑J|<:‑||~:>/g",
+    //   ) === null,
+    //   message: 'Password must contain at least one emoticon'
+    // },
     {
       passwordIsInvalid: password =>
         []
