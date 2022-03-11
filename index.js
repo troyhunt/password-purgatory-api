@@ -8,35 +8,38 @@ async function handleRequest(request) {
   let badPasswordMessage =
     "Password looks fine, but you'll never see this message when we're done here 🙂"
 
+  // The code below makes extensive use of JavaScript regular expressions.
+  // See the documentation here:
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
   // TODO: Add a "infuriationLevel" property
   const checks = [
     {
       passwordIsInvalid: password =>
-        password.match('/Homer|Marge|Bart|Lisa|Maggie/g') === null,
+        password.match(/Homer|Marge|Bart|Lisa|Maggie/) === null,
       message:
         'Password must contain at least 1 primary Simpsons family character',
     },
     {
-      passwordIsInvalid: password => password.match(/[ÅåÄäÖöÆæØø]/g) === null,
+      passwordIsInvalid: password => password.match(/[ÅåÄäÖöÆæØø]/) === null,
       message: 'Password must contain at least 1 Nordic character',
     },
     {
       passwordIsInvalid: password =>
-        password.match(/[\u0370-\u03ff\u1f00-\u1fff]/g) === null,
+        password.match(/[\u0370-\u03ff\u1f00-\u1fff]/) === null,
       message: 'Password must contain at least 1 Greek character',
     },
     {
       passwordIsInvalid: password =>
-        password.match('/Peter|Lois|Chris|Meg|Brian|Stewie/g') !== null,
+        password.match(/Peter|Lois|Chris|Meg|Brian|Stewie/) !== null,
       message: 'Password must not contain any primary Griffin family character',
     },
-    // {
-    //   // TODO: Regex is broken, disabled for now.
-    //   passwordIsInvalid: password => password.match(
-    //     "/:‑)|:)|:-]|:]|:>|:-}|:}|:o))|:^)|=]|=)|:]|:->|:>|8-)|:-}|:}|:o)|:^)|=]|=)|:‑D|:D|B^D|:‑(|:(|:‑<|:<|:‑[|:[|:-|||>:[|:{|:(|;(|:'‑(|:'(|:=(|:'‑)|:')|:\"D|:‑O|:O|:‑o|:o|:-0|>:O|>:3|;‑)|;)|;‑]|;^)|:‑P|:-/|:/|:‑.|>:|>:/|:|:‑||:||>:‑)|>:)|}:‑)|>;‑)|>;)|>:3||;‑)|:‑J|<:‑||~:>/g",
-    //   ) === null,
-    //   message: 'Password must contain at least one emoticon'
-    // },
+    {
+      passwordIsInvalid: password => password.match(
+        /:‑)|:)|:-]|:]|:>|:-}|:}|:o))|:^)|=]|=)|:]|:->|:>|8-)|:-}|:}|:o)|:^)|=]|=)|:‑D|:D|B^D|:‑(|:(|:‑<|:<|:‑[|:[|:-|||>:[|:{|:(|;(|:'‑(|:'(|:=(|:'‑)|:')|:\"D|:‑O|:O|:‑o|:o|:-0|>:O|>:3|;‑)|;)|;‑]|;^)|:‑P|:-/|:/|:‑.|>:|>:/|:|:‑||:||>:‑)|>:)|}:‑)|>;‑)|>;)|>:3||;‑)|:‑J|<:‑||~:>/,
+      ) === null,
+      message: 'Password must contain at least one emoticon'
+    },
     {
       passwordIsInvalid: password =>
         []
@@ -49,25 +52,25 @@ async function handleRequest(request) {
         'Password when stripped of non-numeric characters must be a number divisible by 3',
     },
     {
-      passwordIsInvalid: password => password.match('d{5}(-d{4})?') === null,
+      passwordIsInvalid: password => password.match(/d{5}(-d{4})?/) === null,
       message: 'Password must contain a United States zip code',
     },
     {
-      passwordIsInvalid: password => password.match(/[ÄÜÖẞ]/g) === null,
+      passwordIsInvalid: password => password.match(/[ÄÜÖẞ]/) === null,
       message: 'Password must contain at leat one upper case German Umlaut',
     },
     {
-      passwordIsInvalid: password => password.match('dog$') === null,
+      passwordIsInvalid: password => password.match(/dog$/) === null,
       message: 'Password must end with dog',
     },
     {
-      passwordIsInvalid: password => password.match('^cat') === null,
+      passwordIsInvalid: password => password.match(/^cat/) === null,
       message: 'Password must start with cat',
     },
     {
       passwordIsInvalid: password =>
         password.match(
-          '/Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/g',
+          /Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/,
         ) === null,
       message:
         'Password must contain at least one named solarian planetary satellite',
@@ -80,13 +83,13 @@ async function handleRequest(request) {
   else if(password.length < 8) {
     badPasswordMessage = 'Password must be at least 8 characters long'
   }
-  else if(password.match(/\d+/g) === null) {
+  else if(password.match(/\d+/) === null) {
     badPasswordMessage = 'Password must contain at least 1 number'
   }
-  else if(password.match('[A-Z]') === null) {
+  else if(password.match(/[A-Z]/) === null) {
     badPasswordMessage = 'Password must contain at least 1 uppercase character'
   }
-  else if(password.match('[a-z]') === null) {
+  else if(password.match(/[a-z]/) === null) {
     badPasswordMessage = 'Password must contain at least 1 lowercase character'
   } else {
     // Filter down to checks that are failing.
