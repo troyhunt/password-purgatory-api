@@ -52,7 +52,7 @@ async function handleRequest(request) {
         'Password when stripped of non-numeric characters must be a number divisible by 3',
     },
     {
-      passwordIsInvalid: password => password.match(/d{5}(-d{4})?/) === null,
+      passwordIsInvalid: password => password.match(/\d{5}(-\d{4})?/) === null,
       message: 'Password must contain a United States zip code',
     },
     {
