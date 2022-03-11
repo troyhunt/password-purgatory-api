@@ -1,17 +1,22 @@
-const { gzipSize } = require('gzip-size');
+const { gzipSizeSync } = require('gzip-size');
+
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
 })
 
-async function getCompressionCheck(minimumSize) {
-  const baseline = await gzipSize('a');
+function getCompressionCheck(minimumSize) {
+  const baseline = gzipSizeSync('a');
 
   function compressesTooWell(password) {
-    return gzipSize(password).then((size) => size - baseline < minimumSize);
+    const size = gzipSizeSync(password);
+    return size - baseline < minimumSize;
   }
 
-  return compressesTooWell;
+  return {
+    passwordIsInvalid: compressesTooWell,
+    message: `gzip-compressed password must be longer than ${minimumCompressedSize} bytes (not counting overhead)`
+  };
 }
 
 async function handleRequest(request) {
@@ -91,10 +96,8 @@ async function handleRequest(request) {
         password.match(/(?:[^1234569]*[1234569]){3}[^1234569]*/) === null,
       message: 'Password must contain at least 3 digits from the first 10 decimal places of pi',
     },
+    getCompressionCheck(23)
   ]
-
-  const minimumCompressedSize = 23;
-  const compressesTooWell = await getCompressionCheck(minimumCompressedSize);
 
   if (password === null) {
     badPasswordMessage = 'No password was provided'
