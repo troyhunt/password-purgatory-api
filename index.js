@@ -74,6 +74,11 @@ async function handleRequest(request) {
       message:
         'Password must contain at least one named solarian planetary satellite',
     },
+    {
+      passwordIsInvalid: password => 
+        password.match(/(?:[^1234569]*[1234569]){3}[^1234569]*/) === null,
+      message: 'Password must contain at least 3 digits from the first 10 decimal places of pi',
+    },
   ]
 
   if (password === null) {
@@ -101,9 +106,6 @@ async function handleRequest(request) {
       badPasswordMessage =
         validChecks[Math.floor(Math.random() * validChecks.length)].message
     }
-  }
-  else if (password.match('(?:[^1234569]*[1234569]){3}[^1234569]*') === null) {
-    badPasswordMessage = 'Password must contain at least 3 digits from the first 10 decimal places of pi';
   }
 
   // To Do:
