@@ -57,7 +57,7 @@ async function handleRequest(request) {
     },
     {
       passwordIsInvalid: password => password.match(/[ÄÜÖẞ]/) === null,
-      message: 'Password must contain at leat one upper case German Umlaut',
+      message: 'Password must contain at least one upper case German Umlaut',
     },
     {
       passwordIsInvalid: password => password.match(/dog$/) === null,
