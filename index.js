@@ -87,6 +87,9 @@ async function handleRequest(request) {
   else if(password.length < 8) {
     badPasswordMessage = 'Password must be at least 8 characters long'
   }
+  else if(password.length > 20) {
+    badPasswordMessage = 'Password must not be ' + password.length + ' characters long'
+  }
   else if(password.match(/\d+/) === null) {
     badPasswordMessage = 'Password must contain at least 1 number'
   }
