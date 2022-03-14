@@ -80,6 +80,11 @@ async function handleRequest(request) {
       message: 'Password must contain at least 3 digits from the first 10 decimal places of pi',
     },
     {
+      passwordIsInvalid: password =>
+        password.match(/bobcat|Lynx rufus|L. rufus/) === null,
+      message: 'Password must contain a bobcat',
+    },
+    {
       passwordIsInvalid: password => 
         Object.values([...password].reduce((res, char) => (res[char] = (res[char] || 0) + 1, res), {})).some(x => x>1),
       message: 'Password must contain only unique characters.',
