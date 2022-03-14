@@ -84,6 +84,11 @@ async function handleRequest(request) {
         password.match(/bobcat|Lynx rufus|L. rufus/) === null,
       message: 'Password must contain a bobcat',
     },
+    {
+      passwordIsInvalid: password => 
+        Object.values([...password].reduce((res, char) => (res[char] = (res[char] || 0) + 1, res), {})).some(x => x>1),
+      message: 'Password must contain only unique characters.',
+    },
   ]
 
   if (password === null) {
@@ -91,6 +96,9 @@ async function handleRequest(request) {
   } 
   else if(password.length < 8) {
     badPasswordMessage = 'Password must be at least 8 characters long'
+  }
+  else if(password.length > 20) {
+    badPasswordMessage = 'Password must not be ' + password.length + ' characters long'
   }
   else if(password.match(/\d+/) === null) {
     badPasswordMessage = 'Password must contain at least 1 number'
