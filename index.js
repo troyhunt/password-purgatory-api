@@ -15,7 +15,7 @@ async function handleRequest(request) {
   if (password === null) {
     badPasswordMessage = 'No password was provided'
   } else {
-    if (Beelzebub.getChecks(password).length) {
+    if (Beelzebub.getValidChecks(password).length) {
       badPasswordMessage = Beelzebub.infuriate(password).message
     }
   }
