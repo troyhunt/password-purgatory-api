@@ -79,6 +79,11 @@ async function handleRequest(request) {
         password.match(/(?:[^1234569]*[1234569]){3}[^1234569]*/) === null,
       message: 'Password must contain at least 3 digits from the first 10 decimal places of pi',
     },
+    {
+      passwordIsInvalid: password =>
+        password.match(/bobcat|Lynx rufus|L. rufus/) === null,
+      message: 'Password must contain a bobcat',
+    },
   ]
 
   if (password === null) {
