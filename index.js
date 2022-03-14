@@ -101,7 +101,7 @@ async function handleRequest(request) {
         Object.values([...password].reduce((res, char) => (res[char] = (res[char] || 0) + 1, res), {})).some(x => x>1),
       message: 'Password must contain only unique characters.',
     },
-    getCompressionCheck(23)
+    getCompressionCheck(15)
   ]
 
   if (password === null) {
