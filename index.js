@@ -15,7 +15,7 @@ function getCompressionCheck(minimumSize) {
 
   return {
     passwordIsInvalid: compressesTooWell,
-    message: `gzip-compressed password must be longer than ${minimumCompressedSize} bytes (not counting overhead)`,
+    message: `gzip-compressed password must be longer than ${minimumSize} bytes (not counting overhead)`,
     infuriationLevel: InfuriationLevel.Ridiculous,
   };
 }
