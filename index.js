@@ -55,21 +55,25 @@ class Beelzebub {
         password.match(/Homer|Marge|Bart|Lisa|Maggie/) === null,
       message:
         'Password must contain at least 1 primary Simpsons family character',
+      infuriationLevel: InfuriationLevel.High,
     },
     {
       passwordIsInvalid: password => password.match(/[ÅåÄäÖöÆæØø]/) === null,
       message: 'Password must contain at least 1 Nordic character',
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password =>
         password.match(/[\u0370-\u03ff\u1f00-\u1fff]/) === null,
       message: 'Password must contain at least 1 Greek character',
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password =>
         password.match(/Peter|Lois|Chris|Meg|Brian|Stewie/) === null,
       message:
         'Password must contain at least 1 primary Griffin family character',
+      infuriationLevel: InfuriationLevel.High,
     },
     {
       passwordIsInvalid: password =>
@@ -77,6 +81,7 @@ class Beelzebub {
           /:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/,
         ) === null,
       message: 'Password must contain at least one emoticon',
+      infuriationLevel: InfuriationLevel.High,
     },
     {
       passwordIsInvalid: password =>
@@ -88,22 +93,27 @@ class Beelzebub {
         0,
       message:
         'Password when stripped of non-numeric characters must be a number divisible by 3',
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password => password.match(/\d{5}(-\d{4})?/) === null,
       message: 'Password must contain a United States zip code',
+      infuriationLevel: InfuriationLevel.Moderate,
     },
     {
       passwordIsInvalid: password => password.match(/[ÄÜÖẞ]/) === null,
       message: 'Password must contain at least one upper case German Umlaut',
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password => password.match(/dog$/) === null,
       message: 'Password must end with dog',
+      infuriationLevel: InfuriationLevel.Moderate,
     },
     {
       passwordIsInvalid: password => password.match(/^cat/) === null,
       message: 'Password must start with cat',
+      infuriationLevel: InfuriationLevel.Moderate,
     },
     {
       passwordIsInvalid: password =>
@@ -112,12 +122,14 @@ class Beelzebub {
         ) === null,
       message:
         'Password must contain at least one named solarian planetary satellite',
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password =>
         password.match(/(?:[^1234569]*[1234569]){3}[^1234569]*/) === null,
       message:
         'Password must contain at least 3 digits from the first 10 decimal places of pi',
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password =>
@@ -129,6 +141,26 @@ class Beelzebub {
         ).some(x => x > 1),
       message: 'Password must contain only unique characters.',
       infuriationLevel: InfuriationLevel.High,
+    },
+    {
+      passwordIsInvalid: password => password.length < 8,
+      message: 'Password must be at least 8 characters long',
+      infuriationLevel: InfuriationLevel.Low,
+    },
+    {
+      passwordIsInvalid: password => password.match(/\d+/) === null,
+      message: 'Password must contain at least 1 number',
+      infuriationLevel: InfuriationLevel.Low,
+    },
+    {
+      passwordIsInvalid: password => password.match(/[A-Z]/) === null,
+      message: 'Password must contain at least 1 uppercase character',
+      infuriationLevel: InfuriationLevel.Low,
+    },
+    {
+      passwordIsInvalid: password => password.match(/[a-z]/) === null,
+      message: 'Password must contain at least 1 lowercase character',
+      infuriationLevel: InfuriationLevel.Low,
     },
     // {
     //   passwordIsInvalid: password => password.length > 20,
