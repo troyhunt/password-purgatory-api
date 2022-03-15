@@ -133,6 +133,12 @@ class Beelzebub {
     },
     {
       passwordIsInvalid: password =>
+        password.match(/bobcat|Lynx rufus|L. rufus/) === null,
+      message: 'Password must contain a bobcat',
+      infuriationLevel: InfuriationLevel.High,
+    },
+    {
+      passwordIsInvalid: password =>
         Object.values(
           [...password].reduce(
             (res, char) => ((res[char] = (res[char] || 0) + 1), res),
