@@ -5,17 +5,17 @@ addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
 })
 
-function getCompressionCheck(minimumSize) {
+function getCompressionCheck(maxAllowedCompression) {
   const baseline = gzipSizeSync('a');
 
   function compressesTooWell(password) {
     const size = gzipSizeSync(password);
-    return size - baseline < minimumSize;
+    return (size - baseline) < (password.length - maxAllowedCompression);
   }
 
   return {
     passwordIsInvalid: compressesTooWell,
-    message: `gzip-compressed password must be longer than ${minimumSize} bytes (not counting overhead)`,
+    message: `Password must not be too repetitive`,
     infuriationLevel: InfuriationLevel.Ridiculous,
   };
 }
@@ -191,7 +191,7 @@ class Beelzebub {
     //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
     //   infuriationLevel: InfuriationLevel.High,
     // },
-    getCompressionCheck(15)
+    getCompressionCheck(2)
   ]
 
   // Checks that can be used to infuriate the spammer, based on their current password.
