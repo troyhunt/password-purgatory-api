@@ -15,7 +15,7 @@ async function handleRequest(request) {
   if (password && Beelzebub.getValidChecks(password).length) {
     const infuriateResult = Beelzebub.infuriate(password)
     if (infuriateResult) {
-      badPasswordMessage = infuriateResult.message
+      badPasswordMessage = Beelzebub.isFunction(infuriateResult.message) ? infuriateResult.message(password) : infuriateResult.message;
     }
   }
 
@@ -173,16 +173,16 @@ class Beelzebub {
       message: 'Password must contain "Password must contain"',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
-    { 
+    {
       passwordIsInvalid: password => password.match(/(.)\1/) === null,
       message: 'Password must not contain repeating characters',
       infuriationLevel: InfuriationLevel.Moderate,
-    }
-    // {
-    //   passwordIsInvalid: password => password.length > 20,
-    //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
-    //   infuriationLevel: InfuriationLevel.High,
-    // },
+    },
+    {
+      passwordIsInvalid: password => password.length > 20,
+      message: password => 'Password must not be ' + password.length + ' characters long',
+      infuriationLevel: InfuriationLevel.High,
+    },
   ]
 
   // Checks that can be used to infuriate the spammer, based on their current password.
@@ -220,5 +220,9 @@ class Beelzebub {
     return leastInfuriatingChecks[
       Math.floor(Math.random() * leastInfuriatingChecks.length)
     ]
+  }
+
+  static isFunction = functionToCheck => {
+    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
   }
 }
