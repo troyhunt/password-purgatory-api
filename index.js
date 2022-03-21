@@ -169,15 +169,24 @@ class Beelzebub {
       infuriationLevel: InfuriationLevel.Low,
     },
     {
-      passwordIsInvalid: password => password.match(/Password\smust\scontain/) === null,
+      passwordIsInvalid: password =>
+        password.match(/Password\smust\scontain/) === null,
       message: 'Password must contain "Password must contain"',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
-    { 
+    {
       passwordIsInvalid: password => password.match(/(.)\1/) === null,
       message: 'Password must not contain repeating characters',
       infuriationLevel: InfuriationLevel.Moderate,
-    }
+    },
+    {
+      passwordIsInvalid: password =>
+        password.match(
+          /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/,
+        ) === null,
+      message: 'Password must contain at least one emoji.',
+      infuriationLevel: InfuriationLevel.Ridiculous,
+    },
     // {
     //   passwordIsInvalid: password => password.length > 20,
     //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
