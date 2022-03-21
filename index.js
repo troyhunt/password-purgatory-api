@@ -168,6 +168,11 @@ class Beelzebub {
       message: 'Password must contain at least 1 lowercase character',
       infuriationLevel: InfuriationLevel.Low,
     },
+    {
+      passwordIsInvalid: password => password.match(/Password\smust\scontain/) === null,
+      message: 'Password must contain "Password must contain"',
+      infuriationLevel: InfuriationLevel.Ridiculous,
+    },
     // {
     //   passwordIsInvalid: password => password.length > 20,
     //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
