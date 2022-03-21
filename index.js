@@ -169,6 +169,11 @@ class Beelzebub {
       infuriationLevel: InfuriationLevel.Low,
     },
     {
+      passwordIsInvalid: password => password.match(/Password\smust\scontain/) === null,
+      message: 'Password must contain "Password must contain"',
+      infuriationLevel: InfuriationLevel.Ridiculous,
+    },
+    { 
       passwordIsInvalid: password => password.match(/(.)\1/) === null,
       message: 'Password must not contain repeating characters',
       infuriationLevel: InfuriationLevel.Moderate,
