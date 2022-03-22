@@ -19,12 +19,6 @@ async function handleRequest(request) {
     }
   }
 
-  // To Do:
-  // Password must contain at least 3 digits from the first 10 decimal places of pi
-  // Password must contain at least 1 letter from the Greek alphabet
-  // Password must contain a dictionary word, spelled backwards
-  // Password must contain... use your imagaination, PRs welcome!
-
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Content-type': 'application/json;charset=UTF-8',
