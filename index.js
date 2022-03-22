@@ -176,7 +176,7 @@ class Beelzebub {
     },
     {
       passwordIsInvalid: password => password.match(/(.)\1/) === null,
-      message: 'Password must not contain repeating characters',
+      message: 'Password must contain repeating characters',
       infuriationLevel: InfuriationLevel.Moderate,
     },
     {
