@@ -176,6 +176,11 @@ class Beelzebub {
       message: 'Password must contain at least one emoji.',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
+    {
+      passwordIsInvalid: password => password != password.split("").reverse().join(""),
+      message: 'Password must be a palindrome.',
+      infuriationLevel: InfuriationLevel.Ridiculous,
+    },
     // {
     //   passwordIsInvalid: password => password.length > 20,
     //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
