@@ -12,7 +12,7 @@ async function handleRequest(request) {
   // See the documentation here:
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
-  if (password && Beelzebub.getValidChecks(password).length) {
+  if (Beelzebub.getValidChecks(password).length) {
     const infuriateResult = Beelzebub.infuriate(password)
     if (infuriateResult) {
       badPasswordMessage = infuriateResult.message
@@ -141,6 +141,13 @@ class Beelzebub {
         ).some(x => x > 1),
       message: 'Password must contain only unique characters.',
       infuriationLevel: InfuriationLevel.High,
+    },
+    // The empty message should be moved to a separate category if there are too many
+    // Low responses to cycle through. For now it looks to be fine.
+    {
+      passwordIsInvalid: password => password.length === 0,
+      message: 'Password cannot be empty',
+      infuriationLevel: InfuriationLevel.Low,
     },
     {
       passwordIsInvalid: password => password.length < 8,
