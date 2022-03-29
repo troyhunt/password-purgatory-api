@@ -140,7 +140,7 @@ class Beelzebub {
           ),
         ).some(x => x > 1),
       message: 'Password must contain only unique characters.',
-      infuriationLevel: InfuriationLevel.High,
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     // The empty message should be moved to a separate category if there are too many
     // Low responses to cycle through. For now it looks to be fine.
