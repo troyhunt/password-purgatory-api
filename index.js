@@ -160,6 +160,16 @@ class Beelzebub {
       infuriationLevel: InfuriationLevel.Low,
     },
     {
+      passwordIsInvalid: password => password.match(/1$/) !== null,
+      message: 'Password must not end in "1"',
+      infuriationLevel: InfuriationLevel.Low,
+    },
+    {
+      passwordIsInvalid: password => password.match(/!$/) !== null,
+      message: 'Password must not end in "!"',
+      infuriationLevel: InfuriationLevel.Low,
+    },
+    {
       passwordIsInvalid: password => password.match(/[A-Z]/) === null,
       message: 'Password must contain at least 1 uppercase character',
       infuriationLevel: InfuriationLevel.Low,
