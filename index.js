@@ -95,7 +95,7 @@ class Beelzebub {
       infuriationLevel: InfuriationLevel.Moderate,
     },
     {
-      passwordIsInvalid: password => password.match(/[ÄÜÖẞ]/) === null,
+      passwordIsInvalid: password => password.match(/[ÄÜÖ]/) === null,
       message: 'Password must contain at least one upper case German Umlaut',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
