@@ -90,11 +90,6 @@ class Beelzebub {
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
-      passwordIsInvalid: password => password.match(/\d{5}(-\d{4})?/) === null,
-      message: 'Password must contain a United States zip code',
-      infuriationLevel: InfuriationLevel.Moderate,
-    },
-    {
       passwordIsInvalid: password => password.match(/[ÄÜÖ\u1e9e]/) === null,
       message: 'Password must contain at least one upper case German Umlaut',
       infuriationLevel: InfuriationLevel.Ridiculous,
