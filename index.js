@@ -193,6 +193,12 @@ class Beelzebub {
       message: 'Password must be a palindrome.',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
+    {
+      passwordIsInvalid: password =>
+        password.match(/\u202E/) === null,
+      message: 'Password must contain RLO character',
+      infuriationLevel: InfuriationLevel.High,
+    },
     // {
     //   passwordIsInvalid: password => password.length > 20,
     //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
