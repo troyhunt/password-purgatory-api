@@ -107,7 +107,7 @@ class Beelzebub {
     {
       passwordIsInvalid: password =>
         password.match(
-          /spring|summer|fall|winter/,
+          /spring|summer|autumn|fall|winter/,
         ) === null,
       message:
         'Password must contain at least one season of the year',
