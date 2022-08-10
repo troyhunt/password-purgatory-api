@@ -107,6 +107,15 @@ class Beelzebub {
     {
       passwordIsInvalid: password =>
         password.match(
+          /spring|summer|fall|winter/,
+        ) === null,
+      message:
+        'Password must contain at least one season of the year',
+      infuriationLevel: InfuriationLevel.Moderate,
+    },
+    {
+      passwordIsInvalid: password =>
+        password.match(
           /Luna|Deimos|Phobos|Amalthea|Callisto|Europa|Ganymede|Io|Dione|Enceladus|Hyperion|Iapetus|Mimas|Phoebe|Rhea|Tethys|Titan|Ariel|Miranda|Oberon|Titania|Umbriel|Nereid|Triton|Charon|Himalia|Carme|Ananke|Adrastea|Elara|Adrastea|Elara|Epimetheus|Callirrhoe|Kalyke|Thebe|Methone|Kiviuq|Ijiraq|Paaliaq|Albiorix|Erriapus|Pallene|Polydeuces|Bestla|Daphnis|Despina|Puck|Carpo|Pasiphae|Themisto|Cyllene|Isonoe|Harpalyke|Hermippe|Iocaste|Chaldene|Euporie/,
         ) === null,
       message:
