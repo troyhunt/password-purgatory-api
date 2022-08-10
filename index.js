@@ -115,6 +115,15 @@ class Beelzebub {
     },
     {
       passwordIsInvalid: password =>
+        password.match(
+          /Michael|Toby|Dwight|Pam|Jim|Meredith|Gabe|Kelly|Ryan|Jan|Robert|Oscar|Angela|Kevin|Darryl|Creed|Stanley|Phyllis|Bob|Andy|Erin|David|Nellie|Roy|Karen|Hank|Pete|Clark|Nate|Holly|Todd|Calvin|Val|Mose|Cathy|Helene|Deangelo/,
+        ) === null,
+      message:
+        'Password must contain at least one cast member from The Office',
+      infuriationLevel: InfuriationLevel.Ridiculous,
+    },
+    {
+      passwordIsInvalid: password =>
         password.match(/(?:[^1234569]*[1234569]){3}[^1234569]*/) === null,
       message:
         'Password must contain at least 3 digits from the first 10 decimal places of pi',
