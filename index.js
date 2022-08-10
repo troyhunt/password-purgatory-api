@@ -150,6 +150,11 @@ class Beelzebub {
       infuriationLevel: InfuriationLevel.Low,
     },
     {
+      passwordIsInvalid: password => ( password.length < 12 || password.length > 16),
+      message: 'Password must be 12-16 characters long',
+      infuriationLevel: InfuriationLevel.Low,
+    },
+    {
       passwordIsInvalid: password => password.match(/\d+/) === null,
       message: 'Password must contain at least 1 number',
       infuriationLevel: InfuriationLevel.Low,
