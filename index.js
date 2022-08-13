@@ -232,7 +232,7 @@ class Beelzebub {
     {
         passwordIsInvalid: password =>
         password.match(/hell|spam|black|master|user|year|maria|ivan|petr|800|987|13|1234|666|20\d\d|19\d\d|crazy/i) === null,
-      message: 'Password can't contain forbidden words, numbers or letters',
+      message: "Password can't contain forbidden words, numbers or letters",
       infuriationLevel: InfuriationLevel.Moderate,
     },
     {
