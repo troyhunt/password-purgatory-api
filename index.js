@@ -70,6 +70,11 @@ class Beelzebub {
       infuriationLevel: InfuriationLevel.High,
     },
     {
+      passwordIsInvalid: password => password.match(/42/) === null,
+      message: 'Password must contain the answer to life, the universe, and everything',
+      infuriationLevel: InfuriationLevel.High,
+    },
+    {
       passwordIsInvalid: password =>
         password.match(
           /:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/,
