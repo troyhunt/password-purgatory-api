@@ -72,7 +72,7 @@ class Beelzebub {
     {
       passwordIsInvalid: password => password.match(/42/) === null,
       message: 'Password must contain the answer to life, the universe, and everything',
-      infuriationLevel: InfuriationLevel.High,
+      infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password =>
