@@ -77,7 +77,7 @@ class Beelzebub {
     {
       passwordIsInvalid: password =>
         password.match(
-          /:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\||~:>/,
+          /:‑\)|:\)|:\-\]|:\]|:>|:\-\}|:\}|:o\)\)|:\^\)|=\]|=\)|:\]|:\->|:>|8\-\)|:\-\}|:\}|:o\)|:\^\)|=\]|=\)|:‑D|:D|B\^D|:‑\(|:\(|:‑<|:<|:‑\[|:\[|:\-\|\||>:\[|:\{|:\(|;\(|:\'‑\(|:\'\(|:=\(|:\'‑\)|:\'\)|:"D|:‑O|:O|:‑o|:o|:\-0|>:O|>:3|;‑\)|;\)|;‑\]|;\^\)|:‑P|:\-\/|:\/|:‑\.|>:|>:\/|:|:‑\||:\||>:‑\)|>:\)|\}:‑\)|>;‑\)|>;\)|>:3|\|;‑\)|:‑J|<:‑\|(╯°□°）╯︵ ┻━┻|~:>/,
         ) === null,
       message: 'Password must contain at least one emoticon',
       infuriationLevel: InfuriationLevel.High,
@@ -149,7 +149,7 @@ class Beelzebub {
       message: 'Password must contain a bobcat',
       infuriationLevel: InfuriationLevel.High,
     },
-    {
+    /*{
       passwordIsInvalid: password =>
         Object.values(
           [...password].reduce(
@@ -159,7 +159,8 @@ class Beelzebub {
         ).some(x => x > 1),
       message: 'Password must contain only unique characters.',
       infuriationLevel: InfuriationLevel.Ridiculous,
-    },
+    }, // in this case can't access the rule about palindrome
+    */
     // The empty message should be moved to a separate category if there are too many
     // Low responses to cycle through. For now it looks to be fine.
     {
@@ -172,11 +173,11 @@ class Beelzebub {
       message: 'Password must be at least 8 characters long',
       infuriationLevel: InfuriationLevel.Low,
     },
-    {
+    /*{
       passwordIsInvalid: password => ( password.length < 12 || password.length > 16),
       message: 'Password must be 12-16 characters long',
       infuriationLevel: InfuriationLevel.Low,
-    },
+    },*/
     {
       passwordIsInvalid: password => password.match(/\d+/) === null,
       message: 'Password must contain at least 1 number',
@@ -227,11 +228,23 @@ class Beelzebub {
       message: 'Password must contain RLO character',
       infuriationLevel: InfuriationLevel.High,
     },
-    // {
-    //   passwordIsInvalid: password => password.length > 20,
-    //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
-    //   infuriationLevel: InfuriationLevel.High,
-    // },
+    {
+        passwordIsInvalid: password =>
+        (password.length < 3 || password[2] != "®"),
+      message: "Password's third character has to be ®",
+      infuriationLevel: InfuriationLevel.Low,
+    },
+    {
+        passwordIsInvalid: password =>
+        password.match(/hell|spam|black|master|user|year|maria|ivan|petr|800|987|13|1234|666|20\d\d|19\d\d|crazy/i) === null,
+      message: "Password can't contain forbidden words, numbers or letters",
+      infuriationLevel: InfuriationLevel.Moderate,
+    },
+    {
+      passwordIsInvalid: password => password.length % 19,
+      message: "Password's length has to be divisible by 19",
+      infuriationLevel: InfuriationLevel.High,
+    },
   ]
 
   // Checks that can be used to infuriate the spammer, based on their current password.
