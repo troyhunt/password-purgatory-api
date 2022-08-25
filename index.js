@@ -102,12 +102,12 @@ class Beelzebub {
     {
       passwordIsInvalid: password => password.match(/dog$/) === null,
       message: 'Password must end with dog',
-      infuriationLevel: InfuriationLevel.Moderate,
+      infuriationLevel: InfuriationLevel.High,
     },
     {
       passwordIsInvalid: password => password.match(/^cat/) === null,
       message: 'Password must start with cat',
-      infuriationLevel: InfuriationLevel.Moderate,
+      infuriationLevel: InfuriationLevel.High,
     },
     {
       passwordIsInvalid: password =>
