@@ -257,6 +257,11 @@ class Beelzebub {
       message: 'Password length must be odd',
       infuriationLevel: InfuriationLevel.Moderate,
     },
+        {
+      passwordIsInvalid: password => password.match(/[ÁÉÍÓÚáéíóú]/) === null,
+      message: 'Password must contain at least 1 character with an acute accent',
+      infuriationLevel: InfuriationLevel.Ridiculous,
+    },
     // {
     //   passwordIsInvalid: password => password.length > 20,
     //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
