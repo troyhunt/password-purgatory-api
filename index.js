@@ -157,7 +157,7 @@ class Beelzebub {
             {},
           ),
         ).some(x => x > 1),
-      message: 'Password must contain only unique characters.',
+      message: 'Password must contain only unique characters',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
     // The empty message should be moved to a separate category if there are too many
@@ -213,12 +213,12 @@ class Beelzebub {
         password.match(
           /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/,
         ) === null,
-      message: 'Password must contain at least one emoji.',
+      message: 'Password must contain at least one emoji',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password => password != password.split("").reverse().join(""),
-      message: 'Password must be a palindrome.',
+      message: 'Password must be a palindrome',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
@@ -244,17 +244,17 @@ class Beelzebub {
     },
     {
       passwordIsInvalid: password => password.length % 2 != 0,
-      message: 'Password length must be even.',
+      message: 'Password length must be even',
       infuriationLevel: InfuriationLevel.Moderate,
     },
     {
       passwordIsInvalid: password => (password.length % 2 != 0) || ((password.substring(0, (password.length / 2)) != password.substring(password.length / 2, password.length).split("").reverse().join(""))),
-      message: 'Password length must be even, and the final half of the password needs to contain the reverse of the first.',
+      message: 'Password length must be even, and the final half of the password needs to contain the reverse of the first',
       infuriationLevel: InfuriationLevel.Ridiculous,
     },
     {
       passwordIsInvalid: password => password.length % 2 == 0,
-      message: 'Password length must be odd.',
+      message: 'Password length must be odd',
       infuriationLevel: InfuriationLevel.Moderate,
     },
     // {
