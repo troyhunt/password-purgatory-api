@@ -233,6 +233,30 @@ class Beelzebub {
       message: 'Password must not contain consecutive characters',
       infuriationLevel: InfuriationLevel.Moderate,
     },
+    {
+      passwordIsInvalid: password =>
+        password.match(
+          /Pawn|Bishop|Knight|Rook|Queen|King/
+        ) === null,
+      message:
+        'Password must contain at least one chess piece',
+      infuriationLevel: InfuriationLevel.High,
+    },
+    {
+      passwordIsInvalid: password => password.length % 2 != 0,
+      message: 'Password length must be even.',
+      infuriationLevel: InfuriationLevel.Moderate,
+    },
+    {
+      passwordIsInvalid: password => (password.length % 2 != 0) || ((password.substring(0, (password.length / 2)) != password.substring(password.length / 2, password.length).split("").reverse().join(""))),
+      message: 'Password length must be even, and the final half of the password needs to contain the reverse of the first.',
+      infuriationLevel: InfuriationLevel.Ridiculous,
+    },
+    {
+      passwordIsInvalid: password => password.length % 2 == 0,
+      message: 'Password length must be odd.',
+      infuriationLevel: InfuriationLevel.Moderate,
+    },
     // {
     //   passwordIsInvalid: password => password.length > 20,
     //   message: 'Password must not be ' + password.length + ' characters long', TODO: Can't access password here. Might need to make message a function?
