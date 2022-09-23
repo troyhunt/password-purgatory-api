@@ -257,7 +257,7 @@ class Beelzebub {
       message: 'Password length must be odd',
       infuriationLevel: InfuriationLevel.Moderate,
     },
-        {
+    {
       passwordIsInvalid: password => password.match(/[ÁÉÍÓÚáéíóú]/) === null,
       message: 'Password must contain at least 1 character with an acute accent',
       infuriationLevel: InfuriationLevel.Ridiculous,
